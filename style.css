@@ -1,14 +1,160 @@
-body {
+/* General Layout */
+body, html {
   margin: 0;
   padding: 0;
-  background: black;
+  height: 100%;
+  font-family: sans-serif;
+  background: #000; /* Black background */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150vh;
-  overflow: hidden;
 }
 
+.container {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gift Box Base */
+.gift-box {
+  width: 300px;
+  height: 300px;
+  background-color: #8B0000; /* Dark red */
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  margin: auto;
+}
+
+/* Ribbon */
+.ribbon {
+  width: 40px;
+  height: 300px;
+  background-color: #006400; /* Dark green */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon::after {
+  content: '';
+  width: 300px;
+  height: 40px;
+  background-color: #006400;
+  position: absolute;
+  top: 130px;
+  left: -130px;
+}
+
+/* Box Lids (3D flaps) */
+.lid {
+  position: absolute;
+  background-color: #8B0000;
+  transform-origin: center;
+  transition: transform 1s ease;
+}
+
+.top {
+  width: 300px;
+  height: 150px;
+  top: 0;
+  left: 0;
+}
+
+.bottom {
+  width: 300px;
+  height: 150px;
+  bottom: 0;
+  left: 0;
+}
+
+.left {
+  width: 150px;
+  height: 300px;
+  top: 0;
+  left: 0;
+}
+
+.right {
+  width: 150px;
+  height: 300px;
+  top: 0;
+  right: 0;
+}
+
+/* Opening Animation */
+.gift-box.open .top {
+  transform: rotateX(-120deg);
+}
+
+.gift-box.open .bottom {
+  transform: rotateX(120deg);
+}
+
+.gift-box.open .left {
+  transform: rotateY(-120deg);
+}
+
+.gift-box.open .right {
+  transform: rotateY(120deg);
+}
+
+/* Question Section */
+.question {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.question.show {
+  display: flex;
+}
+
+.question h1 {
+  font-style: italic; /* Italicized text */
+  color: #fff;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 5px;
+}
+
+#yesBtn {
+  background-color: #ff69b4;
+  color: white;
+}
+
+#noBtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Fireworks Canvas */
 canvas {
-  border: 1px solid #0e0d0d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
