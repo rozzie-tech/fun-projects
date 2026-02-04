@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150vh;
+  overflow: hidden;
+}
+
+canvas {
+  border: 1px solid #0e0d0d;
+}
